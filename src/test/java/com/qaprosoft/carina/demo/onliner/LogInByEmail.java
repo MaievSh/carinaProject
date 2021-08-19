@@ -5,6 +5,7 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.gui.pages.onlinerPages.HomePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.onlinerPages.VerificationOnliner;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
@@ -15,7 +16,8 @@ import java.lang.invoke.MethodHandles;
 
 public class LogInByEmail implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(LogInByEmail.class);
-
+    private final String user = VerificationOnliner.getUser("properties","user");
+    private final String password = VerificationOnliner.getPassword("properties","password");
     @Test()
     @MethodOwner(owner = "Aleksandra")
     @TestPriority(Priority.P3)
@@ -30,8 +32,12 @@ public class LogInByEmail implements IAbstractTest {
         homePage.enterPasswordField("567567Qwer");
         homePage.pressEnterBtn();*/
         homePage.logIn();
-        homePage.getEmailField().type("bogbogdanovbog@gmail.com");
-        homePage.getPassField().type("567567Qwer");
+        VerificationOnliner verification = new VerificationOnliner(getDriver());
+        verification.setDBSignificance("properties", "user", user, "password", password);
+        String loginProp = verification.getUser("properties", "user");
+        String passwordProp = verification.getPassword("properties", "password");
+        homePage.getEmailField().type(loginProp);
+        homePage.getPassField().type(passwordProp);
         homePage.pressEnterBtn();
         homePage.getUserImageBtn().click();
         Assert.assertTrue(homePage.getUserImageBtn().isElementPresent(),"Log in success");
