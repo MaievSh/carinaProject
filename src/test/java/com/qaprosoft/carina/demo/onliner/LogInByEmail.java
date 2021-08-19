@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import java.lang.invoke.MethodHandles;
 
 public class LogInByEmail implements IAbstractTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(LogInByEmail.class);
 
     @Test()
     @MethodOwner(owner = "Aleksandra")
@@ -33,5 +33,7 @@ public class LogInByEmail implements IAbstractTest {
         homePage.getEmailField().type("bogbogdanovbog@gmail.com");
         homePage.getPassField().type("567567Qwer");
         homePage.pressEnterBtn();
+        homePage.getUserImageBtn().click();
+        Assert.assertTrue(homePage.getUserImageBtn().isElementPresent(),"Log in success");
     }
 }

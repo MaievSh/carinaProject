@@ -14,19 +14,19 @@ import org.testng.annotations.Test;
 import java.lang.invoke.MethodHandles;
 
 public class AddToCartTest implements IAbstractTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AddToCartTest.class);
 
     @Test()
     @MethodOwner(owner = "Aleksandra")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-//исправить - не работает
     public void addToCart(){
         HomePageOnliner homePage = new HomePageOnliner(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.searchItem("Iphone 12");
-        homePage.chooseItemInCatalog();
+        homePage.getIframe().click();
         homePage.inCart();
+        Assert.assertEquals(getDriver().getTitle(),"Корзина заказов onliner.by","Cart page is not opened!");
     }
 }

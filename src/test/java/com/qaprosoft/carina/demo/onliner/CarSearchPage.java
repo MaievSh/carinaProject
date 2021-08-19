@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import java.lang.invoke.MethodHandles;
 
 public class CarSearchPage implements IAbstractTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(CarSearchPage.class);
 
     @Test()
     @MethodOwner(owner = "Aleksandra")
@@ -36,5 +36,6 @@ public class CarSearchPage implements IAbstractTest {
         carMarketPageOnliner.clickDistrict();
         carMarketPageOnliner.getCityField().click();
         carMarketPageOnliner.clickCity();
+        Assert.assertEquals(getDriver().getTitle(),"Купить авто Березино - Автобарахолка Onliner","Car market page is not opened!");
     }
 }

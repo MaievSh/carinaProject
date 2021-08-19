@@ -9,11 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.invoke.MethodHandles;
-
 public class HomePageOnliner extends AbstractPage {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(HomePageOnliner.class);
 
     @FindBy(xpath = "//input[@class='fast-search__input']")
     private ExtendedWebElement searchField;
@@ -25,6 +23,8 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement carMarketPage;
     @FindBy(xpath = "//a[@class='b-main-navigation__link']//parent::span[contains(text(),'Барахолка')]")
     private ExtendedWebElement fleaMarketPage;
+    @FindBy(xpath = "//iframe[@class = 'modal-iframe']")
+    private ExtendedWebElement frame;
     @FindBy(xpath = "//div[@class='result__item result__item_product']//parent::a[@class='product__title-link'][contains(text(),'Смартфон Apple iPhone 12 64GB (зеленый)')]")
     private ExtendedWebElement chooseItem;
     @FindBy(xpath = "//a[contains(text(),'В корзину')]")
@@ -41,10 +41,8 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement enterBtn;
     @FindBy(xpath = "//span[@class='b-main-navigation__text']//parent::span[contains(text(),'Услуги')]")
     private ExtendedWebElement servicesPage;
-
-
-
-
+    @FindBy(xpath = "//div[@class = 'b-top-profile__image js-header-user-avatar']")
+    private ExtendedWebElement userImageBtn;
 
 
     public HomePageOnliner(WebDriver driver) {
@@ -62,8 +60,9 @@ public class HomePageOnliner extends AbstractPage {
     public void openСarMarketPage(){
         carMarketPage.click();
     }
-    public void openFleaMarket(){
+    public FleaMarketPageOnliner clickOnFleaMarketBtn(){
         fleaMarketPage.click();
+        return new FleaMarketPageOnliner(getDriver());
     }
 
     public void chooseItemInCatalog (){
@@ -95,6 +94,11 @@ public class HomePageOnliner extends AbstractPage {
         servicesPage.click();
     }
 
+    public ExtendedWebElement getUserImageBtn(){
+       return userImageBtn;
+    }
 
-
+    public ExtendedWebElement getIframe(){
+        return frame;
+    }
 }

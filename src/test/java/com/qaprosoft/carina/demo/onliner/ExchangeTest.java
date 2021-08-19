@@ -15,19 +15,20 @@ import org.testng.annotations.Test;
 import java.lang.invoke.MethodHandles;
 
 public class ExchangeTest implements IAbstractTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExchangeTest.class);
 
     @Test()
     @MethodOwner(owner = "Aleksandra")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
 
-    public void addToCart() {
+    public void exchange() {
         HomePageOnliner homePage = new HomePageOnliner(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         ExchangePageOnliner exchangePage = new ExchangePageOnliner(getDriver());
         exchangePage.clickExchangeIcon();
         exchangePage.getAmountInField().type("500");
+        Assert.assertEquals(getDriver().getTitle(),"Лучшие курсы валют onliner.by","Exchange page is not opened!");
     }
 }

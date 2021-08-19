@@ -12,12 +12,17 @@ import org.slf4j.LoggerFactory;
 import java.lang.invoke.MethodHandles;
 
 public class CarMarketPageOnliner extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(CarMarketPageOnliner.class);
 
     public CarMarketPageOnliner (WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(R.CONFIG.get(Configuration.Parameter.URL.getKey()));
+        setPageURL("https://ab.onliner.by");
     }
+   /* public CarMarketPageOnliner (WebDriver driver) {
+        super(driver);
+        setPageURL("https://ab.onliner.by/city/berezino");
+    }*/
+
     @FindBy(xpath = "//div[@class = 'input-style__faux'][contains(text(),'Все страны')]")
     private ExtendedWebElement countriesField;
     @FindBy(xpath = "//div[@class = 'dropdown-style__checkbox-sign'][contains(text(),'Беларусь')]")

@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import java.lang.invoke.MethodHandles;
 
 public class ActiveServicesTest implements IAbstractTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ActiveServicesTest.class);
 
     @Test()
     @MethodOwner(owner = "Aleksandra")
@@ -30,5 +30,6 @@ public class ActiveServicesTest implements IAbstractTest {
         homePage.clickServicesPage();
         ServicesPageOnliner activeServices = new ServicesPageOnliner(getDriver());
         activeServices.clickActiveCheckBox();
+        Assert.assertEquals(getDriver().getTitle(),"Заказы на услуги","Services page is not opened!");
     }
 }
