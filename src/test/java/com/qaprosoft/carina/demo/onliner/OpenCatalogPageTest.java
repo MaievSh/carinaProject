@@ -23,7 +23,7 @@ public class OpenCatalogPageTest implements IAbstractTest {
     @MethodOwner(owner = "Aleksandra")
     @TestLabel(name = "feature", value = {"web", "regression"})
 
-    public void CatalogPage() {
+    public void catalogPage() {
         HomePageOnliner homePage = new HomePageOnliner(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");

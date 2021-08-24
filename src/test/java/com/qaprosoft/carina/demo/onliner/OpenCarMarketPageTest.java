@@ -23,7 +23,7 @@ public class OpenCarMarketPageTest implements IAbstractTest {
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
 
-    public void CarMarketPage() {
+    public void carMarketPage() {
         HomePageOnliner homePage = new HomePageOnliner(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
