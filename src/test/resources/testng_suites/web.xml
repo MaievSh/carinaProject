@@ -15,9 +15,11 @@
 	<parameter name="jenkinsJobExecutionMode" value="continue"/>
 	<parameter name="jenkinsAutoScreenshot" value="true"/>
 
-	<test name="GSM arena web tests">
+	<test name="Onliner web tests">
 		<classes>
-			<class name="com.qaprosoft.carina.demo.WebSampleTest" />
+			<class name="com.qaprosoft.carina.demo.onliner.FleaMarketPageTest" />
+			<class name="com.qaprosoft.carina.demo.onliner.ActiveServicesTest" />
+
 		</classes>
 	</test>
 

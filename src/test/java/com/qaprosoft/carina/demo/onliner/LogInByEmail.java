@@ -10,6 +10,7 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.lang.invoke.MethodHandles;
@@ -23,14 +24,10 @@ public class LogInByEmail implements IAbstractTest {
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
 
-    public void LogIn() {
+    public void logIn() {
         HomePageOnliner homePage = new HomePageOnliner(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
-       /* homePage.logIn();
-        homePage.enterEmailField("bogbogdanovbog@gmail.com");
-        homePage.enterPasswordField("567567Qwer");
-        homePage.pressEnterBtn();*/
         homePage.logIn();
         VerificationOnliner verification = new VerificationOnliner(getDriver());
         verification.setDBSignificance("properties", "user", user, "password", password);
