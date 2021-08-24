@@ -58,6 +58,7 @@ public class FleaMarketPageTest implements IAbstractTest {
     public void myAdsPage(){
     FleaMarketPageOnliner fleaMarket = new FleaMarketPageOnliner(getDriver());
     fleaMarket.myAds();
+        Assert.assertEquals(getDriver().getTitle(),"Поиск - Барахолка onliner.by","Flea market page is not opened!");
     }
 
     @Test()
@@ -67,6 +68,7 @@ public class FleaMarketPageTest implements IAbstractTest {
     public void myAdsParticipatePage(){
         FleaMarketPageOnliner fleaMarket = new FleaMarketPageOnliner(getDriver());
         fleaMarket.myAdsParticipate();
+        Assert.assertEquals(getDriver().getTitle(),"Поиск - Барахолка onliner.by","Flea market page is not opened!");
     }
 
     @Test()
@@ -76,6 +78,7 @@ public class FleaMarketPageTest implements IAbstractTest {
     public void newAdsPage(){
         FleaMarketPageOnliner fleaMarket = new FleaMarketPageOnliner(getDriver());
         fleaMarket.newAds();
+        Assert.assertEquals(getDriver().getTitle(),"Поиск - Барахолка onliner.by","Flea market page is not opened!");
     }
 
 }
