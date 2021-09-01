@@ -17,7 +17,7 @@ public class AddToCartTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(AddToCartTest.class);
 
     @Test()
-    @MethodOwner(owner = "Aleksandra")
+    @MethodOwner(owner = "Aleksandrca")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void addToCart(){

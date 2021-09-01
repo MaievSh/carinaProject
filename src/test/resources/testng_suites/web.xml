@@ -17,8 +17,7 @@
 
 	<test name="Onliner web tests">
 		<classes>
-			<class name="com.qaprosoft.carina.demo.onliner.FleaMarketPageTest" />
-			<class name="com.qaprosoft.carina.demo.onliner.ActiveServicesTest" />
+			<class name="com.qaprosoft.carina.demo.onliner.AddToCartTest"/>
 
 		</classes>
 	</test>
