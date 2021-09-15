@@ -18,7 +18,8 @@ public class ServicesPageOnliner extends AbstractPage {
         super(driver);
         setPageAbsoluteURL(R.CONFIG.get(Configuration.Parameter.URL.getKey()));
     }
-    @FindBy(xpath = "//span[@class='service-form__checkbox-sign ng-binding']//parent::span[contains(text(),'Активные')]")
+    @FindBy(xpath = "//input[@class='i-checkbox__real ng-untouched ng-valid ng-dirty ng-valid-parse ng-empty']//following-sibling::span[@class='i-checkbox__faux']")
+
     private ExtendedWebElement activeCheckBox;
 
     public void clickActiveCheckBox(){

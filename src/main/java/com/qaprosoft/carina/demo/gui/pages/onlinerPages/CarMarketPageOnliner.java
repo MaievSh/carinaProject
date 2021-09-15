@@ -18,20 +18,16 @@ public class CarMarketPageOnliner extends AbstractPage {
         super(driver);
         setPageURL("https://ab.onliner.by");
     }
-   /* public CarMarketPageOnliner (WebDriver driver) {
-        super(driver);
-        setPageURL("https://ab.onliner.by/city/berezino");
-    }*/
 
-    @FindBy(xpath = "//div[@class = 'input-style__faux'][contains(text(),'Все страны')]")
+    @FindBy(xpath = "//div[@class = 'input-style__faux'][contains(text(),'Все страны')]/following-sibling::div[@class='input-style__real']")
     private ExtendedWebElement countriesField;
     @FindBy(xpath = "//div[@class = 'dropdown-style__checkbox-sign'][contains(text(),'Беларусь')]")
     private ExtendedWebElement chooseCountry;
-    @FindBy(xpath = "//div[@class = 'input-style__faux'][contains(text(),'Все области')]")
+    @FindBy(xpath = "//div[@class = 'input-style__faux'][contains(text(),'Все области')]/following-sibling::div[@class='input-style__real']")
     private ExtendedWebElement districtField;
     @FindBy(xpath = "//div[@class = 'dropdown-style__checkbox-sign'][contains(text(),'Минская обл.')]")
     private ExtendedWebElement chooseDistrict;
-    @FindBy(xpath = "//div[@class = 'input-style__faux'][contains(text(),'Все города')]")
+    @FindBy(xpath = "//div[@class = 'input-style__faux'][contains(text(),'Все города')]/following-sibling::div[@class='input-style__real']")
     private ExtendedWebElement cityField;
     @FindBy(xpath = "//div[@class = 'dropdown-style__checkbox-sign'][contains(text(),'Березино')]")
     private ExtendedWebElement chooseCity;

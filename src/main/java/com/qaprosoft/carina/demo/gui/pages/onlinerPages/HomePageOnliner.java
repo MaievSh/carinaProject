@@ -9,17 +9,17 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 public class HomePageOnliner extends AbstractPage {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HomePageOnliner.class);
 
     @FindBy(xpath = "//input[@class='fast-search__input']")
     private ExtendedWebElement searchField;
-  /*  @FindBy(xpath = "//div[@class='search__suggests']")
-    private ExtendedWebElement searchField1;*/
-    @FindBy(xpath = "//span[contains(text(), 'Каталог')]")
+    @FindBy(xpath = "//span[@class='b-main-navigation__text'] [contains(text(), 'Каталог')]")
     private ExtendedWebElement catalogPage;
-    @FindBy(xpath = "//a[@class='b-main-navigation__link']//parent::span[contains(text(),'Автобарахолка')]")
+    @FindBy(xpath = "//span[@class='b-main-navigation__text']//parent::span[contains(text(),'Автобарахолка')]")
     private ExtendedWebElement carMarketPage;
     @FindBy(xpath = "//a[@class='b-main-navigation__link']//parent::span[contains(text(),'Барахолка')]")
     private ExtendedWebElement fleaMarketPage;
@@ -43,7 +43,8 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement servicesPage;
     @FindBy(xpath = "//div[@class = 'b-top-profile__image js-header-user-avatar']")
     private ExtendedWebElement userImageBtn;
-
+    @FindBy(xpath = "//span[@class='b-main-navigation__text'][contains(text(), 'Форум')]")
+    private ExtendedWebElement forumBtn;
 
     public HomePageOnliner(WebDriver driver) {
         super(driver);
@@ -57,6 +58,8 @@ public class HomePageOnliner extends AbstractPage {
     public void openCatalogPage(){
     catalogPage.click();
     }
+
+
     public void openСarMarketPage(){
         carMarketPage.click();
     }
@@ -101,4 +104,10 @@ public class HomePageOnliner extends AbstractPage {
     public ExtendedWebElement getIframe(){
         return frame;
     }
+
+    public ForumPageOnliner clickOnForumBtn(){
+        forumBtn.click();
+        return new ForumPageOnliner(getDriver());
+    }
+
 }

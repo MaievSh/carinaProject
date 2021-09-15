@@ -29,6 +29,6 @@ public class OpenCatalogPageTest implements IAbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         CatalogPageOnliner catalogPage = new CatalogPageOnliner(getDriver());
         homePage.openCatalogPage();
-        Assert.assertEquals(getDriver().getTitle(),"Каталог Onliner","Catalog page is not opened!");
+        Assert.assertEquals(catalogPage.getTitle(),"Каталог Onlíner","Catalog page is not opened!");
     }
 }
