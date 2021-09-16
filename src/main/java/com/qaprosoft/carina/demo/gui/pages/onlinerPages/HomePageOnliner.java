@@ -9,8 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 public class HomePageOnliner extends AbstractPage {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HomePageOnliner.class);
@@ -45,6 +43,11 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement userImageBtn;
     @FindBy(xpath = "//span[@class='b-main-navigation__text'][contains(text(), 'Форум')]")
     private ExtendedWebElement forumBtn;
+    @FindBy(xpath = "//header[@class='b-main-page-blocks-header-2 cfix']//parent::a[contains(@href, 'https://people.onliner.by')][contains(text(), 'Люди')]")
+    private ExtendedWebElement peopleBtn;
+    @FindBy(xpath = "//li[@class='project-navigation__item project-navigation__item_primary project-navigation__item_active']//parent::span[@class='project-navigation__sign'][contains(text(), 'Люди')]")
+    private ExtendedWebElement activePeopleBtn;
+
 
     public HomePageOnliner(WebDriver driver) {
         super(driver);
@@ -109,5 +112,15 @@ public class HomePageOnliner extends AbstractPage {
         forumBtn.click();
         return new ForumPageOnliner(getDriver());
     }
+
+    public PeopleNewsOnliner clickOnPeopleBtn(){
+        peopleBtn.click();
+        return new PeopleNewsOnliner(getDriver());
+    }
+
+    public ExtendedWebElement getActivePeopleBtn(){
+        return activePeopleBtn;
+    }
+
 
 }

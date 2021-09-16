@@ -17,7 +17,6 @@ public class ForumPageOnliner extends AbstractPage {
         setPageURL("https://forum.onliner.by/");
     }
 
-
     @FindBy(xpath = "//a[contains(@href, '/viewtopic.php?t=358736')][contains(text(), 'Бюро находок')]")
     private ExtendedWebElement lostAndFoundPageBtn;
     @FindBy(xpath = "//a[contains(@href, '/viewtopic.php?t=358736')][contains(text(), 'Бюро находок')]")
@@ -41,7 +40,7 @@ public class ForumPageOnliner extends AbstractPage {
         previousBtn.get(0).click();
     }
 
- public ExtendedWebElement getTimeMessage(){
+    public ExtendedWebElement getTimeMessage(){
         return timeMessage;
- }
+    }
 }
