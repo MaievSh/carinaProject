@@ -47,6 +47,8 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement peopleBtn;
     @FindBy(xpath = "//li[@class='project-navigation__item project-navigation__item_primary project-navigation__item_active']//parent::span[@class='project-navigation__sign'][contains(text(), 'Люди')]")
     private ExtendedWebElement activePeopleBtn;
+    @FindBy(xpath = "//span[@class='b-main-navigation__text'][contains(text(),'Дома и квартиры')]")
+    private ExtendedWebElement homeAndApartBtn;
 
 
     public HomePageOnliner(WebDriver driver) {
@@ -121,6 +123,12 @@ public class HomePageOnliner extends AbstractPage {
     public ExtendedWebElement getActivePeopleBtn(){
         return activePeopleBtn;
     }
+
+    public ApartmentPageOnliner hoverHomeAndApartBtn(){
+        homeAndApartBtn.click();
+        return new ApartmentPageOnliner(getDriver());
+    }
+
 
 
 }
