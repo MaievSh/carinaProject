@@ -15,7 +15,7 @@ public class HomePageOnliner extends AbstractPage {
 
     @FindBy(xpath = "//input[@class='fast-search__input']")
     private ExtendedWebElement searchField;
-    @FindBy(xpath = "//span[@class='b-main-navigation__text'] [contains(text(), 'Каталог')]")
+    @FindBy(xpath = "//span[@class='b-main-navigation__text'][contains(text(), 'Каталог')]")
     private ExtendedWebElement catalogPage;
     @FindBy(xpath = "//span[@class='b-main-navigation__text']//parent::span[contains(text(),'Автобарахолка')]")
     private ExtendedWebElement carMarketPage;

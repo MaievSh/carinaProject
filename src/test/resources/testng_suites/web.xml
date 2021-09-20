@@ -18,7 +18,8 @@
 	<test name="Onliner web tests">
 		<classes>
 			<class name="com.qaprosoft.carina.demo.onliner.AddToCartTest"/>
-
+			<class name="com.qaprosoft.carina.demo.onliner.CarSearchPage"/>
+			<class name="com.qaprosoft.carina.demo.onliner.AddToCartTest"/>
 		</classes>
 	</test>
 

@@ -13,7 +13,7 @@ public class RentApartmentTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(RentApartmentTest.class);
 
     @Test
-    public void openPeopleNewsPage(){
+    public void openChooseApartment(){
         HomePageOnliner homePage = new HomePageOnliner(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
