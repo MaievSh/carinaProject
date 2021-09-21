@@ -27,10 +27,11 @@ public class AddToCartTest implements IAbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.searchItem("Iphone 12");
         homePage.getIframe();
-        pause(5);
         homePage.chooseItemInCatalog();
         CatalogPageOnliner catalogPage = new CatalogPageOnliner(getDriver());
+        pause(5);
         catalogPage.clickYeas();
+        pause(5);
         homePage.inCart();
         Assert.assertEquals(getDriver().getTitle(),"Корзина заказов onliner.by","Cart page is not opened!");
     }
