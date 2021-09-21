@@ -4,6 +4,7 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
+import com.qaprosoft.carina.demo.gui.pages.onlinerPages.CatalogPageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onlinerPages.HomePageOnliner;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.junit.platform.commons.logging.Logger;
@@ -25,7 +26,11 @@ public class AddToCartTest implements IAbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         homePage.searchItem("Iphone 12");
-        homePage.getIframe().click();
+        homePage.getIframe();
+        pause(5);
+        homePage.chooseItemInCatalog();
+        CatalogPageOnliner catalogPage = new CatalogPageOnliner(getDriver());
+        catalogPage.clickYeas();
         homePage.inCart();
         Assert.assertEquals(getDriver().getTitle(),"Корзина заказов onliner.by","Cart page is not opened!");
     }

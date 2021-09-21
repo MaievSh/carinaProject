@@ -4,10 +4,13 @@ import com.qaprosoft.carina.core.foundation.utils.Configuration;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class HomePageOnliner extends AbstractPage {
 
@@ -22,11 +25,12 @@ public class HomePageOnliner extends AbstractPage {
     @FindBy(xpath = "//a[@class='b-main-navigation__link']//parent::span[contains(text(),'Барахолка')]")
     private ExtendedWebElement fleaMarketPage;
     @FindBy(xpath = "//iframe[@class = 'modal-iframe']")
+
     private ExtendedWebElement frame;
-    @FindBy(xpath = "//div[@class='result__item result__item_product']//parent::a[@class='product__title-link'][contains(text(),'Смартфон Apple iPhone 12 64GB (зеленый)')]")
-    private ExtendedWebElement chooseItem;
-    @FindBy(xpath = "//a[contains(text(),'В корзину')]")
-    private ExtendedWebElement addToCart;
+    @FindBy(xpath = "//div[@class='product__offers']//parent::a[@class='button button_orange product__button']")
+    private List <ExtendedWebElement> chooseItem;
+    @FindBy(xpath = "//div[@class='offers-list__control offers-list__control_default helpers_hide_tablet']//parent::a[@class][contains(text(),'В корзину')]")
+    private List <ExtendedWebElement> addToCart;
     @FindBy(xpath = "//a[@class='auth-bar__item auth-bar__item--cart']")
     private ExtendedWebElement cartButton;
     @FindBy(xpath = "//div[contains(text(),'Вход')]")
@@ -74,11 +78,13 @@ public class HomePageOnliner extends AbstractPage {
     }
 
     public void chooseItemInCatalog (){
-    chooseItem.click();
+    chooseItem.get(0).click();
+
     }
 
+
     public void inCart(){
-        addToCart.click();
+        addToCart.get(0).click();
         cartButton.click();
     }
 
@@ -106,8 +112,8 @@ public class HomePageOnliner extends AbstractPage {
        return userImageBtn;
     }
 
-    public ExtendedWebElement getIframe(){
-        return frame;
+    public void getIframe(){
+        frame.getDriver().switchTo().frame(driver.findElement(By.xpath("//iframe[@class = 'modal-iframe']")));
     }
 
     public ForumPageOnliner clickOnForumBtn(){
