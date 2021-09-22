@@ -54,7 +54,8 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement homeAndApartBtn;
     @FindBy(xpath = "//span[@class='button-style button-style_another button-style_base offers-form__button']")
     private ExtendedWebElement popupCity;
-
+    @FindBy(xpath = "//li[@class='b-top-navigation-informers__item top-informer-weather js-weather-widget']")
+    private ExtendedWebElement weatherBtn;
 
     public HomePageOnliner(WebDriver driver) {
         super(driver);
@@ -137,6 +138,8 @@ public class HomePageOnliner extends AbstractPage {
         return new ApartmentPageOnliner(getDriver());
     }
 
-
-
+    public WeatherPageOnliner openWeatherPage(){
+        weatherBtn.click();
+        return new WeatherPageOnliner(getDriver());
+    }
 }
