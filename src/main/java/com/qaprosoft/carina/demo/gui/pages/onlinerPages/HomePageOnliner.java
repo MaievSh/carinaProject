@@ -26,9 +26,9 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement fleaMarketPage;
     @FindBy(xpath = "//iframe[@class = 'modal-iframe']")
     private ExtendedWebElement frame;
-    @FindBy(xpath = "//div[@class='product__offers']//parent::a[@class='button button_orange product__button']")
+    @FindBy(xpath = "//div[@class='product__details']")
     private List <ExtendedWebElement> chooseItem;
-    @FindBy(xpath = "//div[@class='offers-list__control offers-list__control_default helpers_hide_tablet']//parent::a[@class][contains(text(),'В корзину')]")
+    @FindBy(xpath = "//a[@class='button-style button-style_base-alter product-aside__item-button button-style_expletive']")
     private List <ExtendedWebElement> addToCart;
     @FindBy(xpath = "//a[@class='auth-bar__item auth-bar__item--cart']")
     private ExtendedWebElement cartButton;
@@ -79,13 +79,13 @@ public class HomePageOnliner extends AbstractPage {
     }
 
     public void chooseItemInCatalog (){
-    chooseItem.get(0).click();
+    chooseItem.get(3).click();
 
     }
 
 
     public void inCart(){
-        addToCart.get(3).click();
+        addToCart.get(0).click();
         popupCity.clickIfPresent();
         cartButton.click();
     }
