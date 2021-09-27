@@ -25,7 +25,7 @@ public class ActiveServicesTest implements IAbstractTest {
     private final String password = VerificationOnliner.getPassword("properties","password");
 
 
-    @BeforeTest
+    @BeforeClass
     public void LogIn(){
         HomePageOnliner homePage = new HomePageOnliner(getDriver());
         homePage.open();
