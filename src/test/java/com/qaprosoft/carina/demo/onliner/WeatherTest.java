@@ -9,8 +9,12 @@ import com.qaprosoft.carina.demo.gui.pages.onlinerPages.WeatherPageOnliner;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 public class WeatherTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(WeatherPageOnliner.class);
