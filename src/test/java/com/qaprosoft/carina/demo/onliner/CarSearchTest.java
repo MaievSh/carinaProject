@@ -5,7 +5,6 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.gui.pages.onlinerPages.CarMarketPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.onlinerPages.ExchangePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onlinerPages.HomePageOnliner;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.junit.platform.commons.logging.Logger;
@@ -13,10 +12,8 @@ import org.junit.platform.commons.logging.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.lang.invoke.MethodHandles;
-
-public class CarSearchPage implements IAbstractTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CarSearchPage.class);
+public class CarSearchTest implements IAbstractTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CarSearchTest.class);
 
     @Test()
     @MethodOwner(owner = "Aleksandra")
@@ -31,11 +28,11 @@ public class CarSearchPage implements IAbstractTest {
         homePage.openСarMarketPage();
         CarMarketPageOnliner carMarketPageOnliner = new CarMarketPageOnliner(getDriver());
         carMarketPageOnliner.getCountriesField().click();
-        carMarketPageOnliner.clickCountry();
+        carMarketPageOnliner.clickCountry(CarMarketPageOnliner.BelarusCountry.Могилевская.getCountry());
         carMarketPageOnliner.getDistrictField().click();
-        carMarketPageOnliner.clickDistrict();
+        carMarketPageOnliner.clickDistrict(CarMarketPageOnliner.BelarusCountry.Могилевская);
         carMarketPageOnliner.getCityField().click();
-        carMarketPageOnliner.clickCity();
-        Assert.assertEquals(getDriver().getTitle(),"Купить авто Березино - Автобарахолка Onliner","Car market page is not opened!");
+        carMarketPageOnliner.clickCity(CarMarketPageOnliner.BelarusCountry.Могилевская.getCity().get(2));
+        Assert.assertEquals(getDriver().getTitle(),"Автобарахолка - покупка, продажа автомобилей","Car market page is not opened!");
     }
 }

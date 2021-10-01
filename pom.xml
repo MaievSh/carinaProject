@@ -124,6 +124,25 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire -->
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire</artifactId>
+			<version>3.0.0-M5</version>
+			<type>pom</type>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire-junit4 -->
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire-junit4</artifactId>
+			<version>3.0.0-M5</version>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<build>
@@ -166,6 +185,15 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M4</version>
 				<configuration>
+<!--					<parallel>tests</parallel>-->
+<!--					<threadCount>13</threadCount>-->
+					<!--<properties>
+						<property>
+							<name>parallel</name>
+							<value>classes</value>
+							<threadCount>5</threadCount>
+						</property>
+					</properties>-->
 					<argLine>-javaagent:${project.build.directory}/agent/zebrunner-agent.jar</argLine>
 					<useSystemClassLoader>false</useSystemClassLoader>
 					<suiteXmlFiles>

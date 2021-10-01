@@ -24,7 +24,7 @@ public class FleaMarketPageTest implements IAbstractTest {
     private final String user = VerificationOnliner.getUser("properties","user");
     private final String password = VerificationOnliner.getPassword("properties","password");
 
-    @BeforeClass
+    @BeforeMethod
     public void LogIn(){
         HomePageOnliner homePage = new HomePageOnliner(getDriver());
         homePage.open();

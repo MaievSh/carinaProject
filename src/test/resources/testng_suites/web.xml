@@ -1,7 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite verbose="1" name="Carina Demo Tests - Web Sample" parallel="methods">
+<suite verbose="1" name="Web test Onliner" parallel="methods" thread-count="5">
 
-	<parameter name="suiteOwner" value="qpsdemo"/>
+
+<parameter name="suiteOwner" value="qpsdemo"/>
 	<parameter name="jenkinsJobName" value="Web-Demo-Test"/>
 	<parameter name="jenkinsJobType" value="web"/>
 	<parameter name="jenkinsEnvironments" value="DEMO"/>
@@ -15,9 +16,10 @@
 	<parameter name="jenkinsJobExecutionMode" value="continue"/>
 	<parameter name="jenkinsAutoScreenshot" value="true"/>
 
+
 	<test name="Onliner web tests">
 		<classes>
-			<class name="com.qaprosoft.carina.demo.onliner.CarSearchPage"/>
+			<class name="com.qaprosoft.carina.demo.onliner.CarSearchTest"/>
 			<class name="com.qaprosoft.carina.demo.onliner.RentApartmentTest"/>
 			<class name="com.qaprosoft.carina.demo.onliner.FleaMarketPageTest"/>
 			<class name="com.qaprosoft.carina.demo.onliner.ExchangeTest"/>
@@ -29,9 +31,8 @@
 			<class name="com.qaprosoft.carina.demo.onliner.SearchInCatalogTest"/>
 			<class name="com.qaprosoft.carina.demo.onliner.ActiveServicesTest"/>
 			<class name="com.qaprosoft.carina.demo.onliner.OpenCarMarketPageTest"/>
-
-
 		</classes>
+
 	</test>
 
 </suite>
