@@ -56,6 +56,19 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement popupCity;
     @FindBy(xpath = "//li[@class='b-top-navigation-informers__item top-informer-weather js-weather-widget']")
     private ExtendedWebElement weatherBtn;
+    @FindBy(xpath = "//a[@class='b-main-page-tabs__item b-main-page-tabs__item_active'][contains(text(),'Новости')]")
+    private ExtendedWebElement sportFrameNewsActive;
+    @FindBy(xpath = "//a[@class='b-main-page-tabs__item'][contains(text(),'Новости')]")
+    private ExtendedWebElement sportFrameNews;
+    @FindBy(xpath = "//a[@class='b-main-page-tabs__item'][contains(text(),'Футбол')]")
+    private ExtendedWebElement sportFrameFootball;
+    @FindBy(xpath = "//a[@class='b-main-page-tabs__item'][contains(text(),'Хоккей')]")
+    private ExtendedWebElement sportFrameHockey;
+    @FindBy(xpath = "//a[@class='b-main-page-tabs__item'][contains(text(),'Баскетбол')]")
+    private ExtendedWebElement sportFrameBasketball;
+
+
+
 
     public HomePageOnliner(WebDriver driver) {
         super(driver);
@@ -141,5 +154,15 @@ public class HomePageOnliner extends AbstractPage {
     public WeatherPageOnliner openWeatherPage(){
         weatherBtn.click();
         return new WeatherPageOnliner(getDriver());
+    }
+
+    public void setSportFrame(){
+        sportFrameFootball.click();
+        sportFrameHockey.click();
+        sportFrameBasketball.click();
+        sportFrameNews.click();
+    }
+    public ExtendedWebElement getSportFrameNewsActive(){
+        return sportFrameNewsActive;
     }
 }
