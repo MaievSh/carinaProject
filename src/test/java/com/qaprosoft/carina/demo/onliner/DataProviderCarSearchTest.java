@@ -32,11 +32,11 @@ public class DataProviderCarSearchTest implements IAbstractTest {
     public void choosePlace(String Country, String District, String City) throws InterruptedException {
         CarMarketPageOnliner carMarketPageOnliner = new CarMarketPageOnliner(getDriver());
         carMarketPageOnliner.getCountriesField();
-        carMarketPageOnliner.сlickCountry1(Country);
+        carMarketPageOnliner.сlickCountry(Country);
         carMarketPageOnliner.getDistrictField();
-        carMarketPageOnliner.clickDistrict1(District);
+        carMarketPageOnliner.clickDistrict(District);
         carMarketPageOnliner.getCityField();
-        carMarketPageOnliner.clickCity1(City);
+        carMarketPageOnliner.clickCity(City);
         Assert.assertTrue(carMarketPageOnliner.getPresentItems().isElementPresent(),"Car is not choosing!");
     }
 }

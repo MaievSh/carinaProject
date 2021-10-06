@@ -39,11 +39,11 @@ public class CarSearchTest implements IAbstractTest {
     public void chooseCar(String Country, String District, String City) throws InterruptedException{
         CarMarketPageOnliner carMarketPageOnliner = new CarMarketPageOnliner(getDriver());
         carMarketPageOnliner.getCountriesField();
-        carMarketPageOnliner.сlickCountry1(Country);
+        carMarketPageOnliner.сlickCountry(Country);
         carMarketPageOnliner.getDistrictField();
-        carMarketPageOnliner.clickDistrict1(District);
+        carMarketPageOnliner.clickDistrict(District);
         carMarketPageOnliner.getCityField();
-        carMarketPageOnliner.clickCity1(City);
+        carMarketPageOnliner.clickCity(City);
         carMarketPageOnliner.scrollToCarCompleteSetBody();
         carMarketPageOnliner.getCarCompleteBody();
         carMarketPageOnliner.clickCarBody(CarMarketPageOnliner.CarCompleteSetBody.Внедорожник);

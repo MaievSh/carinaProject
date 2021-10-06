@@ -119,13 +119,13 @@ public class CarMarketPageOnliner extends AbstractPage {
       dataField.get(2).click();
     }
 
-    public void сlickCountry1(String country){
+    public void сlickCountry(String country){
       chooseCountry.format(country).click();
     }
-    public void clickDistrict1(String district){
+    public void clickDistrict(String district){
         chooseDistrict.format(district).click();
     }
-    public void clickCity1(String city){
+    public void clickCity(String city){
         chooseCity.format(city).click();
     }
 
