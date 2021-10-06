@@ -10,17 +10,13 @@ import com.qaprosoft.carina.demo.gui.pages.onlinerPages.HomePageOnliner;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CarSearchTest implements IAbstractTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CarSearchTest.class);
+public class DataProviderCarSearchTest implements IAbstractTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DataProviderCarSearchTest.class);
+
 
     @BeforeClass
     public void firstStep(){
@@ -30,13 +26,10 @@ public class CarSearchTest implements IAbstractTest {
         homePage.openСarMarketPage();
     }
 
-
     @Test(dataProvider = "SingleDataProvider")
     @MethodOwner(owner = "Aleksandra")
-    @TestPriority(Priority.P3)
-    @TestLabel(name = "feature", value = {"web", "regression"})
     @XlsDataSourceParameters(path = "xls/market.xlsx", sheet = "Sheet 1", dsUid = "TUID", dsArgs = "Country,District,City")
-    public void chooseCar(String Country, String District, String City) throws InterruptedException{
+    public void choosePlace(String Country, String District, String City) throws InterruptedException {
         CarMarketPageOnliner carMarketPageOnliner = new CarMarketPageOnliner(getDriver());
         carMarketPageOnliner.getCountriesField();
         carMarketPageOnliner.сlickCountry1(Country);
@@ -44,19 +37,6 @@ public class CarSearchTest implements IAbstractTest {
         carMarketPageOnliner.clickDistrict1(District);
         carMarketPageOnliner.getCityField();
         carMarketPageOnliner.clickCity1(City);
-        carMarketPageOnliner.scrollToCarCompleteSetBody();
-        carMarketPageOnliner.getCarCompleteBody();
-        carMarketPageOnliner.clickCarBody(CarMarketPageOnliner.CarCompleteSetBody.Внедорожник);
-        pause(5);
-        carMarketPageOnliner.clickCarBody(CarMarketPageOnliner.CarCompleteSetBody.Лимузин);
-        pause(5);
-        carMarketPageOnliner.getCarCompleteEngine();
-        carMarketPageOnliner.clickCarEngine(CarMarketPageOnliner.CarCompleteSetEngine.Бензин);
-        pause(5);
-        carMarketPageOnliner.scrollToCarCompleteSetCondition();
-        carMarketPageOnliner.getCarCompleteCondition();
-        carMarketPageOnliner.clickCarCondition(CarMarketPageOnliner.CarCompleteSetCondition.пробегом);
-        pause(5);
         Assert.assertTrue(carMarketPageOnliner.getPresentItems().isElementPresent(),"Car is not choosing!");
     }
 }

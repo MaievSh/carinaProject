@@ -2,8 +2,15 @@ package com.qaprosoft.carina.demo.gui.pages.onlinerPages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,9 +25,10 @@ public class CarMarketPageOnliner extends AbstractPage {
         setPageURL("https://ab.onliner.by");
     }
 
-    @FindBy(xpath = "//div[@class = 'input-style__faux'][contains(text(),'Все страны')]/following-sibling::div[@class='input-style__real']")
-    private ExtendedWebElement countriesField;
-    @FindBy(xpath = "//div[@class = 'dropdown-style__checkbox-sign']" + "[contains(text(),"+"'%s')]")
+
+    @FindBy(xpath = "//div[@class='input-style__real']")
+    private List <ExtendedWebElement> dataField;
+    @FindBy(xpath = "//div[@class ='dropdown-style__checkbox-text']//div[text()='%s']")
     private ExtendedWebElement chooseCountry;
     @FindBy(xpath = "//div[@class = 'input-style__faux']" + "[contains(text(),'Все области')]" + "/following-sibling::div[@class='input-style__real']")
     private ExtendedWebElement districtField;
@@ -28,65 +36,100 @@ public class CarMarketPageOnliner extends AbstractPage {
     private ExtendedWebElement chooseDistrict;
     @FindBy(xpath = "//div[@class = 'input-style__faux']" + "[contains(text(),'Все города')]" + "/following-sibling::div[@class='input-style__real']")
     private ExtendedWebElement cityField;
-    @FindBy(xpath = "//div[@class = 'dropdown-style__checkbox-sign']" + "[contains(text(),'%s')]")
+    @FindBy(xpath = "//div[@class='dropdown-style__checkbox-text']//div[text()='%s']")
     private ExtendedWebElement chooseCity;
+    @FindBy(xpath = "//div[@class='vehicle-form__tag-item']")
+    private ExtendedWebElement presentItems;
+    @FindBy(xpath = "//div[@class='dropdown-style__checkbox-sign'][contains(text(),'%s')]")
+    private ExtendedWebElement carBody;
 
-
-    public ExtendedWebElement getCountriesField() {
-        return countriesField;
+    public void scrollToCarCompleteSetBody(){
+        WebElement Element = driver.findElement(By.xpath("//div[@class='vehicle-form__label-title'][text()='Тип кузова']"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", Element);
     }
 
-    public enum BelarusCountry {
-        Минская("Беларусь",Arrays.asList("Минск","Березино","Бобр","Борисов","Вилейка","Воложин",
-                "Городея","Дзержинск","Жодино","Заславль","Зеленый Бор","Ивенец","Клецк","Копыль","Крупки","Логойск","Любань","Марьина Горка",
-                "Молодечно","Мядель","Несвиж","Слуцк","Смолевичи","Солигорск","Старые Дороги","Столбцы","Узда","Фаниполь", "Червень")),
-        Брестская("Беларусь",Arrays.asList("Антополь", "Барановичи", "Белоозерск", "Береза", "Высокое", "Ганцевичи", "Городище", "Давид-Городок", "Домачево",
-        "Дрогичин", "Жабинка", "Иваново", "Ивацевичи", "Каменец", "Кобрин", "Коссово", "Лунинец", "Ляховичи", "Малорита", "Микашевичи", "Пинск", "Пружаны", "Столин")),
-        Витебская("Беларусь",Arrays.asList("Витебск", "Барань", "Бегомль", "Бешенковичи", "Богушевск", "Браслав", "Верхнедвинск", "Ветрино",
-                "Видзы", "Воропаево", "Глубокое", "Городок", "Дисна", "Докшицы", "Друя", "Дубровно", "Езерище", "Лепель", "Лиозно", "Миоры", "Новолукомль",
-                "Новополоцк", "Орша", "Полоцк", "Поставы", "Россоны", "Сенно", "Толочин", "Ушачи", "Чашники", "Шарковщина", "Шумилино")),
-        Гомельская("Беларусь",Arrays.asList("Гомель", "Белицк", "Большевик", "Брагин", "Буда-Кошелево", "Василевичи", "Васильевка", "Ветка",
-                "Добруш", "Ельск", "Житковичи", "Жлобин","Калинковичи", "Корма", "Лельчицы", "Лоев", "Мозырь", "Наровля", "Октябрьский", "Петриков",
-                "Речица", "Рогачев", "Светлогорск", "Туров", "Хойники", "Чечерск")),
-        Гродненская("Беларусь",Arrays.asList("Гродно", "Березовка", "Большая Берестовица", "Волковыск", "Вороново", "Дятлово", "Желудок","Зельва",
-                "Ивье", "Козловщина", "Кореличи", "Лида", "Мосты", "Новогрудок", "Островец", "Ошмяны", "Свислочь", "Скидель", "Слоним", "Сморгонь", "Щучин")),
-        Могилевская("Беларусь",Arrays.asList("Могилев", "Белыничи", "Бобруйск", "Быхов", "Глуск", "Глуша", "Горки", "Гродзянка", "Елизово", "Кировск",
-                "Климовичи", "Кличев", "Костюковичи", "Краснополье", "Кричев", "Круглое", "Мстиславль", "Осиповичи", "Славгород", "Хотимск", "Чаусы", "Чериков", "Шклов"));
-
-        String country;
-        List<String> city;
-        BelarusCountry(String country,List<String> city){
-           this.country = country;
-            this.city = city;
-        }
-
-        public String getCountry(){
-            return country;
-        }
-
-
-        public List<String> getCity(){
-            return city;
-        }
+    public void scrollToCarCompleteSetCondition(){
+        WebElement Element = driver.findElement(By.xpath("//div[@class='vehicle-form__label-title'][text()='Состояние автомобиля']"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", Element);
     }
 
-    public void clickCountry(String country){
-        chooseCountry.format(country).click();
+    public void getCountriesField() {
+        dataField.get(0).click();
     }
 
-    public ExtendedWebElement getDistrictField(){
-        return districtField;
+    public enum CarCompleteSetBody {
+        Седан,
+        Внедорожник,
+        Универсал,
+        Хетчбэк,
+        Лифтбэк,
+        Минивэн,
+        Микроавтобус,
+        Купе,
+        Фургон,
+        Пикап,
+        Кабриолет,
+        Лимузин
     }
 
-    public void clickDistrict(BelarusCountry district){
+    public enum CarCompleteSetEngine {
+        Бензин,
+        Дизель,
+        Электро
+    }
+
+    public enum CarCompleteSetCondition {
+        Новый,
+        пробегом,
+        Аварийный
+    }
+
+
+    public void getCarCompleteBody(){
+
+        dataField.get(6).click();
+    }
+
+    public void getDistrictField(){
+        dataField.get(1).click();
+    }
+
+    public void clickCarBody(CarCompleteSetBody body){
+       carBody.format(body).click();
+    }
+
+    public void clickCarEngine(CarCompleteSetEngine engine){
+        carBody.format(engine).click();
+    }
+
+    public void clickCarCondition(CarCompleteSetCondition condition){
+        carBody.format(condition).click();
+    }
+    public void getCarCompleteEngine(){
+        dataField.get(7).click();
+    }
+
+    public void getCarCompleteCondition(){
+        dataField.get(8).click();
+    }
+
+    public void getCityField(){
+      dataField.get(2).click();
+    }
+
+    public void сlickCountry1(String country){
+      chooseCountry.format(country).click();
+    }
+    public void clickDistrict1(String district){
         chooseDistrict.format(district).click();
     }
-
-    public ExtendedWebElement getCityField(){
-        return cityField;
+    public void clickCity1(String city){
+        chooseCity.format(city).click();
     }
 
-    public void clickCity(String city){
-        chooseCity.format(city).click();
+    public ExtendedWebElement getPresentItems() {
+        return presentItems;
     }
 }
