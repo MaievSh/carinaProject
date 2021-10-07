@@ -35,7 +35,7 @@ public class CarSearchTest implements IAbstractTest {
     @MethodOwner(owner = "Aleksandra")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    @XlsDataSourceParameters(path = "xls/market.xlsx", sheet = "Sheet 1", dsUid = "TUID", dsArgs = "Country,District,City")
+    @XlsDataSourceParameters(path = "xls/market.xlsx", sheet = "TestMarket", dsUid = "TUID", dsArgs = "Country,District,City")
     public void chooseCar(String Country, String District, String City) throws InterruptedException{
         CarMarketPageOnliner carMarketPageOnliner = new CarMarketPageOnliner(getDriver());
         carMarketPageOnliner.getCountriesField();
