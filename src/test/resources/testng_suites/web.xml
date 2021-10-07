@@ -31,6 +31,7 @@
 			<class name="com.qaprosoft.carina.demo.onliner.SearchInCatalogTest"/>
 			<class name="com.qaprosoft.carina.demo.onliner.ActiveServicesTest"/>
 			<class name="com.qaprosoft.carina.demo.onliner.OpenCarMarketPageTest"/>
+			<class name="com.qaprosoft.carina.demo.onliner.SportFrameTest"/>
 		</classes>
 
 	</test>

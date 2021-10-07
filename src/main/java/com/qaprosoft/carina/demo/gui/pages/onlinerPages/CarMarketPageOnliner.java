@@ -42,6 +42,18 @@ public class CarMarketPageOnliner extends AbstractPage {
     private ExtendedWebElement presentItems;
     @FindBy(xpath = "//div[@class='dropdown-style__checkbox-sign'][contains(text(),'%s')]")
     private ExtendedWebElement carBody;
+    @FindBy(xpath = "//span[@class='vehicle-form__checkbox-sign'][contains(text(),'Гибрид')]")
+    private  ExtendedWebElement engineType;
+    @FindBy(xpath = "//span[@class='vehicle-form__checkbox-sign'][contains(text(),'Газобаллонное')]")
+    private  ExtendedWebElement engineType1;
+    @FindBy(xpath = "//div[@class='vehicle-form__checkbox-sign'][contains(text(),'%s')]")
+    private  ExtendedWebElement specificationAnother;
+    @FindBy(xpath = "//span[@class='vehicle-form__checkbox-sign'][contains(text(),'%s')]")
+    private  ExtendedWebElement specificationAdditional;
+
+
+
+
 
     public void scrollToCarCompleteSetBody(){
         WebElement Element = driver.findElement(By.xpath("//div[@class='vehicle-form__label-title'][text()='Тип кузова']"));
@@ -86,6 +98,25 @@ public class CarMarketPageOnliner extends AbstractPage {
         Аварийный
     }
 
+    public enum AnotherSpecificationOfCar {
+        Автоматическая,
+        Механическая,
+        Передний,
+        Задний,
+        Полный
+    }
+    public enum Seller {
+        Частное,
+        Автохаус,
+        Автодилер
+    }
+
+    public enum AdditionalCarSpec {
+       На,
+        Растаможен,
+        Ручное
+    }
+
 
     public void getCarCompleteBody(){
 
@@ -100,6 +131,18 @@ public class CarMarketPageOnliner extends AbstractPage {
        carBody.format(body).click();
     }
 
+    public void clickCarAnotherSpec(AnotherSpecificationOfCar specification){
+      specificationAnother.format(specification).click();
+    }
+
+    public void clickSeller(Seller seller){
+        specificationAnother.format(seller).click();
+    }
+
+    public void clickAdditionalCarSpec(AdditionalCarSpec addCarSpec){
+        specificationAdditional.format(addCarSpec).click();
+    }
+
     public void clickCarEngine(CarCompleteSetEngine engine){
         carBody.format(engine).click();
     }
@@ -107,6 +150,7 @@ public class CarMarketPageOnliner extends AbstractPage {
     public void clickCarCondition(CarCompleteSetCondition condition){
         carBody.format(condition).click();
     }
+
     public void getCarCompleteEngine(){
         dataField.get(7).click();
     }
@@ -131,5 +175,11 @@ public class CarMarketPageOnliner extends AbstractPage {
 
     public ExtendedWebElement getPresentItems() {
         return presentItems;
+    }
+
+    public void getEngineType() {
+        engineType.click();
+        engineType.click();
+        engineType1.click();
     }
 }

@@ -26,7 +26,7 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement fleaMarketPage;
     @FindBy(xpath = "//iframe[@class = 'modal-iframe']")
     private ExtendedWebElement frame;
-    @FindBy(xpath = "//div[@class='product__details']")
+    @FindBy(xpath = "//div[@class='result__item result__item_product']")
     private List <ExtendedWebElement> chooseItem;
     @FindBy(xpath = "//a[@class='button-style button-style_base-alter product-aside__item-button button-style_expletive']")
     private List <ExtendedWebElement> addToCart;
@@ -93,10 +93,9 @@ public class HomePageOnliner extends AbstractPage {
     }
 
     public void chooseItemInCatalog (){
-    chooseItem.get(3).click();
+    chooseItem.get(0).click();
 
     }
-
 
     public void inCart(){
         addToCart.get(0).click();

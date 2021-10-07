@@ -36,7 +36,7 @@ public class CarSearchTest implements IAbstractTest {
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     @XlsDataSourceParameters(path = "xls/market.xlsx", sheet = "TestMarket", dsUid = "TUID", dsArgs = "Country,District,City")
-    public void chooseCar(String Country, String District, String City) throws InterruptedException{
+    public void chooseCar(String Country, String District, String City){
         CarMarketPageOnliner carMarketPageOnliner = new CarMarketPageOnliner(getDriver());
         carMarketPageOnliner.getCountriesField();
         carMarketPageOnliner.сlickCountry(Country);
@@ -47,16 +47,22 @@ public class CarSearchTest implements IAbstractTest {
         carMarketPageOnliner.scrollToCarCompleteSetBody();
         carMarketPageOnliner.getCarCompleteBody();
         carMarketPageOnliner.clickCarBody(CarMarketPageOnliner.CarCompleteSetBody.Внедорожник);
-        pause(5);
+
         carMarketPageOnliner.clickCarBody(CarMarketPageOnliner.CarCompleteSetBody.Лимузин);
-        pause(5);
+
         carMarketPageOnliner.getCarCompleteEngine();
         carMarketPageOnliner.clickCarEngine(CarMarketPageOnliner.CarCompleteSetEngine.Бензин);
-        pause(5);
+
+        carMarketPageOnliner.getEngineType();
+        carMarketPageOnliner.clickCarAnotherSpec(CarMarketPageOnliner.AnotherSpecificationOfCar.Автоматическая);
+        carMarketPageOnliner.clickCarAnotherSpec(CarMarketPageOnliner.AnotherSpecificationOfCar.Передний);
         carMarketPageOnliner.scrollToCarCompleteSetCondition();
         carMarketPageOnliner.getCarCompleteCondition();
         carMarketPageOnliner.clickCarCondition(CarMarketPageOnliner.CarCompleteSetCondition.пробегом);
-        pause(5);
+        carMarketPageOnliner.getCarCompleteCondition();
+        carMarketPageOnliner.clickSeller(CarMarketPageOnliner.Seller.Частное);
+        carMarketPageOnliner.clickAdditionalCarSpec(CarMarketPageOnliner.AdditionalCarSpec.Растаможен);
+
         Assert.assertTrue(carMarketPageOnliner.getPresentItems().isElementPresent(),"Car is not choosing!");
     }
 }
