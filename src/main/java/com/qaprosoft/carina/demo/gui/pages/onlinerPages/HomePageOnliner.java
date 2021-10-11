@@ -4,8 +4,10 @@ import com.qaprosoft.carina.core.foundation.utils.Configuration;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.qaprosoft.carina.demo.gui.pages.onlinerPages.JSDemo.JavaScriptUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -164,4 +166,12 @@ public class HomePageOnliner extends AbstractPage {
     public ExtendedWebElement getSportFrameNewsActive(){
         return sportFrameNewsActive;
     }
+
+    public void demo(){
+        driver.manage().window().maximize();
+        WebElement element = driver.findElement(By.xpath("//*[@id='userbar']/div[2]/div/div/div[1]"));
+        JavaScriptUtil.flashElement(element,driver);
+        driver.close();
+    }
+
 }

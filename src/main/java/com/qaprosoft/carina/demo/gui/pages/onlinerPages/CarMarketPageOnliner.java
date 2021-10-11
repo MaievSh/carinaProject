@@ -23,6 +23,9 @@ public class CarMarketPageOnliner extends AbstractPage {
     public CarMarketPageOnliner(WebDriver driver) {
         super(driver);
         setPageURL("https://ab.onliner.by");
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--kiosk");
+        driver = new ChromeDriver(chromeOptions);
     }
 
 

@@ -10,20 +10,15 @@ import com.qaprosoft.carina.demo.gui.pages.onlinerPages.HomePageOnliner;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.junit.platform.commons.logging.Logger;
 import org.junit.platform.commons.logging.LoggerFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CarSearchTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(CarSearchTest.class);
 
     @BeforeClass
-    public void firstStep(){
+    public void firstStep() {
         HomePageOnliner homePage = new HomePageOnliner(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
@@ -36,7 +31,7 @@ public class CarSearchTest implements IAbstractTest {
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     @XlsDataSourceParameters(path = "xls/market.xlsx", sheet = "TestMarket", dsUid = "TUID", dsArgs = "Country,District,City")
-    public void chooseCar(String Country, String District, String City){
+    public void chooseCar(String Country, String District, String City) {
         CarMarketPageOnliner carMarketPageOnliner = new CarMarketPageOnliner(getDriver());
         carMarketPageOnliner.getCountriesField();
         carMarketPageOnliner.сlickCountry(Country);
@@ -47,12 +42,9 @@ public class CarSearchTest implements IAbstractTest {
         carMarketPageOnliner.scrollToCarCompleteSetBody();
         carMarketPageOnliner.getCarCompleteBody();
         carMarketPageOnliner.clickCarBody(CarMarketPageOnliner.CarCompleteSetBody.Внедорожник);
-
         carMarketPageOnliner.clickCarBody(CarMarketPageOnliner.CarCompleteSetBody.Лимузин);
-
         carMarketPageOnliner.getCarCompleteEngine();
         carMarketPageOnliner.clickCarEngine(CarMarketPageOnliner.CarCompleteSetEngine.Бензин);
-
         carMarketPageOnliner.getEngineType();
         carMarketPageOnliner.clickCarAnotherSpec(CarMarketPageOnliner.AnotherSpecificationOfCar.Автоматическая);
         carMarketPageOnliner.clickCarAnotherSpec(CarMarketPageOnliner.AnotherSpecificationOfCar.Передний);
@@ -62,7 +54,6 @@ public class CarSearchTest implements IAbstractTest {
         carMarketPageOnliner.getCarCompleteCondition();
         carMarketPageOnliner.clickSeller(CarMarketPageOnliner.Seller.Частное);
         carMarketPageOnliner.clickAdditionalCarSpec(CarMarketPageOnliner.AdditionalCarSpec.Растаможен);
-
-        Assert.assertTrue(carMarketPageOnliner.getPresentItems().isElementPresent(),"Car is not choosing!");
+        Assert.assertTrue(carMarketPageOnliner.getPresentItems().isElementPresent(), "Car is not choosing!");
     }
 }
